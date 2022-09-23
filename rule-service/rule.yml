@@ -1,49 +1,25 @@
 drools:
-
   myRule: >
-
     import com.example.kdroolscl.model.FDRequest;
-
     dialect "mvel"
-
     salience 4
-
     rule "FD Interest Rate for DD Bank duration more than 1 year and below 2 years"
-
-        when
-
-            fdObject : FDRequest( bankName=="DD" && durationInYear >= 1 && durationInYear < 2);
-
-        then
-
-            fdObject.setFdInterestRate("80%");
-
+    when
+        fdObject : FDRequest( bankName=="DD" && durationInYear >= 1 && durationInYear < 2);
+    then
+        fdObject.setFdInterestRate("80%");
     end;
-
     salience 3
-
     rule "FD Interest Rate for DD Bank for duration more than or equal to 2 years"
-
-        when
-
-            fdObject : FDRequest( bankName=="DD" && durationInYear >= 2);
-
-        then
-
-            fdObject.setFdInterestRate("6%");
-
+    when
+        fdObject : FDRequest( bankName=="DD" && durationInYear >= 2);
+    then
+        fdObject.setFdInterestRate("6%");
     end;
-
     salience 2
-
     rule "FD Interest Rate for BB Bank for duration more than or equal to 1 year"
-
-        when
-
-            fdObject : FDRequest( bankName=="BB" && durationInYear >= 1);
-
-        then
-
-            fdObject.setFdInterestRate("9%");
-
+    when
+        fdObject : FDRequest( bankName=="BB" && durationInYear >= 1);
+    then
+        fdObject.setFdInterestRate("9%");
     end;
